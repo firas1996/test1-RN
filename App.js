@@ -8,20 +8,33 @@ import {
   View,
 } from "react-native";
 import TestItem from "./src/components/TestItem";
+import { useState } from "react";
 
 export default function App() {
-  const data = ["aaa", "bbb", "ccc", "ddd"];
+  const [data, setData] = useState([]);
+  const [inp, setInp] = useState("");
+  const addItem = () => {
+    setData([...data, inp]);
+    setInp("");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.v1}>
-        <TextInput style={styles.imp} />
-        <Button title="Add" />
+        <TextInput
+          style={styles.imp}
+          value={inp}
+          onChangeText={(txt) => {
+            setInp(txt);
+          }}
+        />
+        <Button title="Add" onPress={addItem} />
       </View>
       <View style={styles.v2}>
         <FlatList
           data={data}
+          // keyExtractor={}
           renderItem={({ item }) => {
-            return <TestItem />;
+            return <TestItem title={item} />;
           }}
         />
       </View>
