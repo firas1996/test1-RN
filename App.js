@@ -1,14 +1,30 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import TestItem from "./src/components/TestItem";
 
 export default function App() {
+  const data = ["aaa", "bbb", "ccc", "ddd"];
   return (
     <View style={styles.container}>
       <View style={styles.v1}>
         <TextInput style={styles.imp} />
         <Button title="Add" />
       </View>
-      <View style={styles.v2}></View>
+      <View style={styles.v2}>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => {
+            return <TestItem />;
+          }}
+        />
+      </View>
     </View>
   );
 }
@@ -16,7 +32,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#EEEEEE",
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 48,
