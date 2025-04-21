@@ -40,7 +40,6 @@ export default function App() {
       <View style={styles.v2}>
         <FlatList
           data={data}
-          // keyExtractor={}
           renderItem={({ item }) => {
             return (
               <TestItem
