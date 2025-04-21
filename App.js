@@ -17,7 +17,14 @@ export default function App() {
     setData([...data, { title: inp, isFav: false, id: Math.random() }]);
     setInp("");
   };
-  const updateItem = (id) => {};
+  const updateItem = (id) => {
+    setData(
+      data.map((item) => {
+        return item.id === id ? { ...item, isFav: !item.isFav } : item;
+      })
+    );
+  };
+  console.log(data);
   return (
     <View style={styles.container}>
       <View style={styles.v1}>

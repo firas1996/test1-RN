@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
@@ -7,8 +7,17 @@ const TestItem = ({ title, id, isFav, updateItem }) => {
   return (
     <View style={styles.item}>
       <Text style={styles.itemTXT}>{title}</Text>
-      {/* <FontAwesome name="star-o" size={32} color="white" /> */}
-      <FontAwesome name="star" size={32} color="yellow" />
+      <TouchableOpacity
+        onPress={() => {
+          updateItem(id);
+        }}
+      >
+        <FontAwesome
+          name={isFav ? "star" : "star-o"}
+          size={32}
+          color={isFav ? "yellow" : "white"}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
