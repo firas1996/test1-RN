@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-const TestItem = ({ title }) => {
+const TestItem = ({ title, id, isFav, updateItem }) => {
   //   const { title } = props;
   return (
     <View style={styles.item}>
       <Text style={styles.itemTXT}>{title}</Text>
+      {/* <FontAwesome name="star-o" size={32} color="white" /> */}
+      <FontAwesome name="star" size={32} color="yellow" />
     </View>
   );
 };
@@ -20,6 +23,9 @@ const styles = StyleSheet.create({
     width: "96%",
     alignSelf: "center",
     borderRadius: 12,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   itemTXT: {
     color: "#EEEEEE",

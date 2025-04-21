@@ -14,9 +14,10 @@ export default function App() {
   const [data, setData] = useState([]);
   const [inp, setInp] = useState("");
   const addItem = () => {
-    setData([...data, inp]);
+    setData([...data, { title: inp, isFav: false, id: Math.random() }]);
     setInp("");
   };
+  const updateItem = (id) => {};
   return (
     <View style={styles.container}>
       <View style={styles.v1}>
@@ -34,7 +35,14 @@ export default function App() {
           data={data}
           // keyExtractor={}
           renderItem={({ item }) => {
-            return <TestItem title={item} />;
+            return (
+              <TestItem
+                title={item.title}
+                id={item.id}
+                isFav={item.isFav}
+                updateItem={updateItem}
+              />
+            );
           }}
         />
       </View>
