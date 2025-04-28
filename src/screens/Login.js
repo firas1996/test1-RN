@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 const Login = () => {
@@ -7,8 +8,20 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
-  const loginHandler = () => {
-    navigation.navigate("Home");
+  const loginHandler = async () => {
+    useEffect(() => {}, []);
+    try {
+      console.log(email);
+      console.log(password);
+      const res = await axios.post("http://10.33.2.8:1234/user/signIn", {
+        email: email,
+        password: password,
+      });
+      console.log(res.data.token);
+      // navigation.navigate("Home");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <View style={styles.container}>
